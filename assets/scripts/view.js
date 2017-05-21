@@ -96,7 +96,7 @@ const addHandlers = () => {
     event.stopPropagation()
     alert(`file-name`)
   })
-  $('.content-div').on('click', 'tr', () => {
+  $('.content-div').on('click', 'tbody tr', () => {
     alert(`table-row`)
   })
 }
