@@ -21,6 +21,8 @@ const initView = () => {
   initNavView()
   initListView()
   initSidebarView()
+
+  addHandlers()
   // temporary forms for testing
   initTempView()
 }
@@ -76,6 +78,16 @@ const initTempView = () => {
   template = require('./templates/file-delete.handlebars')
   content = template()
   $('.temp-div').append(content)
+}
+
+const addHandlers = () => {
+  $('.content-div').on('click', '.list-group-item', () => {
+    alert(`list-group-item`)
+  })
+  $('.content-div').on('click', '.file-name button', (event) => {
+    event.stopPropagation()
+    alert(`file-name`)
+  })
 }
 
 module.exports = {
