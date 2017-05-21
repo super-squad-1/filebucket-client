@@ -1,36 +1,8 @@
 'use strict'
 
-// renderView(element, content)
-// replaces element's html with content
-
-const renderView = (element, content) => {
-  $(element).html(content)
-}
-
-// appendView(element, content)
-// appends content to the end of element's html
-
-const appendView = (element, content) => {
-  $(element).append(content)
-}
-
-// renderStatic(element, filepath)
-// renders the template and replaces the element
-
-const renderStatic = (element, filepath) => {
-  const template = require(filepath)
-  const content = template()
-  renderView(element, content)
-}
-
-// appendStatic(element, filepath)
-// renders the template and appends it to the element
-
-const appendStatic = (element, filepath) => {
-  const template = require(filepath)
-  const content = template()
-  appendView(element, content)
-}
+// initView()
+// initializes the view containers on index.html
+// with specific handlebars templates and event handlers
 
 const initView = () => {
   // render private view to navbar-div
@@ -41,12 +13,28 @@ const initView = () => {
   appendStatic('.content-div', './templates/file-table.handlebars')
   // render sidebar view to sidebar-div
   renderStatic('.sidebar-div', './templates/sidebar.handlebars')
-
   // add event handlers for view contoller elements
   addHandlers()
-
   // render temporary forms for testing back-end integration
   initTempView()
+}
+
+// renderStatic(element, filepath)
+// renders the template and replaces the element
+
+const renderStatic = (element, filepath) => {
+  const template = require(filepath)
+  const content = template()
+  $(element).html(content)
+}
+
+// appendStatic(element, filepath)
+// renders the template and appends it to the element
+
+const appendStatic = (element, filepath) => {
+  const template = require(filepath)
+  const content = template()
+  $(element).append(content)
 }
 
 // initTempView()
