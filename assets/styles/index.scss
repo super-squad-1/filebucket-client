@@ -28,6 +28,15 @@ body.container-fluid {
   margin-bottom: 30px;
 }
 
+// make file-name anchor text appear on the left
 .file-name {
   text-align: left;
+}
+
+td{
+  vertical-align: middle !important;
+}
+// make table rows appear clickable
+tr {
+    cursor: pointer;
 }
