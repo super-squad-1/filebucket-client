@@ -4,63 +4,49 @@
 // replaces element's html with content
 
 const renderView = (element, content) => {
-  $(element).html(content).slideDown(250)
+  $(element).html(content)
 }
 
 // appendView(element, content)
 // appends content to the end of element's html
 
 const appendView = (element, content) => {
-  $(element).append(content).slideDown(250)
+  $(element).append(content)
 }
 
-// initView()
-// initializes application views
+// renderStatic(element, filepath)
+// renders the template and replaces the element
+
+const renderStatic = (element, filepath) => {
+  const template = require(filepath)
+  const content = template()
+  renderView(element, content)
+}
+
+// appendStatic(element, filepath)
+// renders the template and appends it to the element
+
+const appendStatic = (element, filepath) => {
+  const template = require(filepath)
+  const content = template()
+  appendView(element, content)
+}
 
 const initView = () => {
-  initNavView()
-  initListView()
-  initTableView()
-  initSidebarView()
+  // render private view to navbar-div
+  renderStatic('.navbar-div', './templates/nav-private.handlebars')
+  // render file list view to content-div
+  renderStatic('.content-div', './templates/file-list.handlebars')
+  // append file table view to content-div
+  appendStatic('.content-div', './templates/file-table.handlebars')
+  // render sidebar view to sidebar-div
+  renderStatic('.sidebar-div', './templates/sidebar.handlebars')
 
+  // add event handlers for view contoller elements
   addHandlers()
-  // temporary forms for testing
+
+  // render temporary forms for testing back-end integration
   initTempView()
-}
-
-// initNavView()
-// initializes navbar view
-
-const initNavView = () => {
-  const template = require('./templates/nav-private.handlebars')
-  const content = template()
-  renderView('.navbar-div', content)
-}
-
-// initListView()
-// initializes file list view
-
-const initListView = () => {
-  const template = require('./templates/file-list.handlebars')
-  const content = template()
-  renderView('.content-div', content)
-}
-
-// initTableView()
-// initializes file table view
-
-const initTableView = () => {
-  const template = require('./templates/file-table.handlebars')
-  const content = template()
-  appendView('.content-div', content)
-}
-// initSidebarView()
-// initializes sidebar panel view
-
-const initSidebarView = () => {
-  const template = require('./templates/sidebar.handlebars')
-  const content = template()
-  renderView('.sidebar-div', content)
 }
 
 // initTempView()
@@ -68,36 +54,30 @@ const initSidebarView = () => {
 
 const initTempView = () => {
   // user sign up / sign in forms
-  let template = require('./templates/form-auth.handlebars')
-  let content = template()
-  renderView('.temp-div', content)
-
+  renderStatic('.temp-div', './templates/form-auth.handlebars')
   // upload file form
-  template = require('./templates/file-upload.handlebars')
-  content = template()
-  appendView('.temp-div', content)
-
+  appendStatic('.temp-div', './templates/file-upload.handlebars')
   // update file form
-  template = require('./templates/file-update.handlebars')
-  content = template()
-  appendView('.temp-div', content)
-
+  appendStatic('.temp-div', './templates/file-update.handlebars')
   // delete file form
-  template = require('./templates/file-delete.handlebars')
-  content = template()
-  appendView('.temp-div', content)
+  appendStatic('.temp-div', './templates/file-delete.handlebars')
 }
 
 const addHandlers = () => {
+  // event handler for list group items
   $('.content-div').on('click', '.list-group-item', () => {
-    alert(`list-group-item`)
+    alert(`list-group-item clicked`)
   })
+
+  // event handler for file name link
   $('.content-div').on('click', '.file-name button', (event) => {
     event.stopPropagation()
-    alert(`file-name`)
+    alert(`file-name clicked`)
   })
+
+  // event handler for table body row
   $('.content-div').on('click', 'tbody tr', () => {
-    alert(`table-row`)
+    alert(`table-row clicked`)
   })
 }
 

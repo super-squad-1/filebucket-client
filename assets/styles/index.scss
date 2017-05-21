@@ -2,7 +2,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 // remove whitespace on left and right sides so navbar will run fill width
-body.container-fluid {
+body {
   padding-left: 0;
   padding-right: 0;
 }
@@ -33,10 +33,13 @@ body.container-fluid {
   text-align: left;
 }
 
-td{
+// temporary fix to vertically center table text
+// should be set in bootstrap-variables
+td {
   vertical-align: middle !important;
 }
+
 // make table rows appear clickable
 tbody tr {
-    cursor: pointer;
+  cursor: pointer;
 }
