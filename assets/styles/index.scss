@@ -1,2 +1,29 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+// remove whitespace on left and right sides so navbar will run fill width
+body.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// set dropdown change password form layout
+.dropdown-menu {
+  min-width: 320px;
+  padding: 15px 15px 0;
+}
+
+// hide validation text below form fields
+.help-block {
+  display: none;
+}
+
+// set temporary min-height on sidebar
+.sidebar-div {
+  min-height: 160px;
+}
+
+// temporary form padding for test forms
+.form {
+  margin-bottom: 30px;
+}
