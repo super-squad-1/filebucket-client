@@ -6,52 +6,71 @@
 
 const initView = () => {
   // render private view to navbar-div
-  renderStatic('.navbar-div', './templates/nav-private.handlebars')
-  // render file list view to content-div
-  renderStatic('.content-div', './templates/file-list.handlebars')
-  // append file table view to content-div
-  appendStatic('.content-div', './templates/file-table.handlebars')
-  // render sidebar view to sidebar-div
-  renderStatic('.sidebar-div', './templates/sidebar.handlebars')
+  renderView('.navbar-div', require('./templates/nav-public.handlebars'))
+  // user sign up / sign in forms
+  renderView('.content-div', require('./templates/form-auth.handlebars'))
   // add event handlers for view contoller elements
   addHandlers()
-  // render temporary forms for testing back-end integration
-  initTempView()
 }
 
-// renderStatic(element, filepath)
+// renderView(element, filepath)
 // renders the template and replaces the element
 
-const renderStatic = (element, filepath) => {
-  const template = require(filepath)
+const renderView = (element, template) => {
+  // const template = require(filepath)
   const content = template()
   $(element).html(content)
 }
 
-// appendStatic(element, filepath)
+// appendView(element, filepath)
 // renders the template and appends it to the element
 
-const appendStatic = (element, filepath) => {
-  const template = require(filepath)
+const appendView = (element, template) => {
+  // const template = require(filepath)
   const content = template()
   $(element).append(content)
 }
 
+// clearView(element)
+// clears the html from the specified element
+
+const clearView = (element) => {
+  $(element).html('')
+}
+
 // initTempView()
-// initializes temporary div view with test forms
+// initializes temporary private view with sample grids and test forms
 
 const initTempView = () => {
-  // user sign up / sign in forms
-  renderStatic('.temp-div', './templates/form-auth.handlebars')
+  // render private view to navbar-div
+  renderView('.navbar-div', require('./templates/nav-private.handlebars'))
+  // render file list view to content-div
+  renderView('.content-div', require('./templates/file-list.handlebars'))
+  // append file table view to content-div
+  appendView('.content-div', require('./templates/file-table.handlebars'))
+  // render sidebar view to sidebar-div
+  // renderView('.sidebar-div', './templates/sidebar.handlebars')
+
   // upload file form
-  appendStatic('.temp-div', './templates/file-upload.handlebars')
+  renderView('.temp-div', require('./templates/file-upload.handlebars'))
   // update file form
-  appendStatic('.temp-div', './templates/file-update.handlebars')
+  appendView('.temp-div', require('./templates/file-update.handlebars'))
   // delete file form
-  appendStatic('.temp-div', './templates/file-delete.handlebars')
+  appendView('.temp-div', require('./templates/file-delete.handlebars'))
 }
 
 const addHandlers = () => {
+  // event handler for sign in form
+  $('.content-div').on('submit', '#sign-in', () => {
+    initTempView()
+  })
+
+  // event handler for sign in form
+  $('.navbar-div').on('click', '#sign-out-btn', () => {
+    clearView('.temp-div')
+    initView()
+  })
+
   // event handler for list group items
   $('.content-div').on('click', '.list-group-item', () => {
     alert(`list-group-item clicked`)

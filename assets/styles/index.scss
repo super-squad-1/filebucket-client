@@ -2,7 +2,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 // remove whitespace on left and right sides so navbar will run fill width
-body {
+body.container-fluid {
   padding-left: 0;
   padding-right: 0;
 }
@@ -19,9 +19,9 @@ body {
 }
 
 // set temporary min-height on sidebar
-.sidebar-div {
-  min-height: 160px;
-}
+// .sidebar-div {
+//   min-height: 160px;
+// }
 
 // temporary form padding for test forms
 .form {
