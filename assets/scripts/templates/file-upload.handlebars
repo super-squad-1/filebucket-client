@@ -10,7 +10,13 @@
     </div>
     <div class="form-group">
       <label class="btn btn-primary" for="my-file-selector">
-        <input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
+        <input id="my-file-selector"
+          type="file"
+          style="display:none;"
+          onchange="$('#upload-file-info')
+            .html($(this)
+            .val()
+            .replace(/.*[\/\\]/, ''));">
         Choose File
       </label>
     </div>
