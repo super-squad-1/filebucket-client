@@ -1,0 +1,29 @@
+<form id="multipart-form-data" enctype="multipart/form-data" class="form form-inline">
+  <fieldset>
+    <legend>File Upload</legend>
+    <p>enctype="multipart/form-data"</p>
+    <div class="form-group">
+      <label for="file-upload-title" class="sr-only">Title</label>
+      <!-- <div class="input-group"> -->
+        <input type="text" class="form-control" name="file[title]" id="file-upload-title" placeholder="Title" value="">
+      <!-- </div> -->
+    </div>
+    <div class="form-group">
+      <label class="btn btn-primary" for="file-upload-select">
+        <input id="file-upload-select"
+          type="file"
+          style="display:none;"
+          onchange="$('#upload-file-info')
+            .html($(this)
+            .val()
+            .replace(/.*[\/\\]/, ''));">
+        Choose File
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</button>
+
+    <span id="upload-file-info"></span>
+
+  </fieldset>
+</form>
