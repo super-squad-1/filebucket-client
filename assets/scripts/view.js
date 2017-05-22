@@ -1,5 +1,6 @@
 'use strict'
 
+const uploadEvents = require('./uploads/events')
 //
 //  PUBLIC AND PRIVATE MODES
 //
@@ -254,6 +255,8 @@ const addHandlers = () => {
     showUpload()
     // console.log(`list-group-item clicked`)
   })
+
+  $('body').on('submit', '#multipart-form-data', uploadEvents.createUploadMultiPart)
 }
 
 module.exports = {

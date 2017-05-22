@@ -19,19 +19,15 @@
               <!-- </div> -->
             </div>
             <div class="form-group">
-              <label class="btn btn-primary" for="my-file-selector">
-                <input id="my-file-selector"
+              <label class="btn btn-primary" for="file-selector">
+                <input id="file-selector"
                   type="file"
-                  style="display:none;"
-                  onchange="$('#upload-file-info')
-                    .html($(this)
-                    .val()
-                    .replace(/.*[\/\\]/, ''));">
+                  style="display:none;">
                 Choose File
               </label>
             </div>
 
-            <span id="upload-file-info"></span>
+            <span id="file-upload-info"></span>
 
           </fieldset>
         </form>
