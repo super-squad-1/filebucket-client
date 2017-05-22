@@ -11,18 +11,60 @@ const setPublicMode = () => {
   // closeAlert()
 
   // render handlebars template for public nav
-  const navTemplate = require('./templates/nav-public.handlebars')
-  renderView('.navbar-div', navTemplate())
+  // const navTemplate = require('./templates/nav-public.handlebars')
+  renderView('.navbar-div', 'nav-public')
   // render handlebars template for sign-in/sign-up forms
-  const contentTemplate = require('./templates/form-auth.handlebars')
-  renderView('.content-div', contentTemplate())
+  // const contentTemplate = require('./templates/form-auth.handlebars')
+  renderView('.content-div', 'form-auth')
+  clearView('.temp-div')
 }
 
 const setPrivateMode = () => {
   // closeAlert()
   // render handlebars template for private nav
-  const navTemplate = require('./templates/nav-private.handlebars')
+  // const navTemplate = require('./templates/nav-private.handlebars')
   renderView('.navbar-div', 'nav-private')
+
+  initTempView()
+}
+
+//
+// VALIDATION & ALERT METHODS
+//
+
+// formAlert(form, field)
+//    triggers form input validation alert
+
+const formAlert = (form, field) => {
+  clearFormAlerts(form)
+  // apply alert classes to specfic input
+  $(field).closest('.form-group').addClass('has-warning has-feedback')
+  // add alert icon to specific input
+  $(field).closest('.input-group').append(`<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>`)
+  // show help text for specific input
+  $(field).closest('.form-group').find('.help-block').show()
+}
+
+// clearFormFields(form)
+//    clear all values from form fields
+
+const clearForm = (form) => {
+  // clear form field alerts
+  clearFormAlerts(form)
+  // clear field values
+  $(form).find('.form-control').val('')
+}
+
+// clearFormAlerts(form)
+//    clear all feedback classes and icons from form fields
+
+const clearFormAlerts = (form) => {
+  // clear all alert classes from inputs
+  $(form).find('.form-group').removeClass('has-warning has-feedback')
+  // remove all alert class icons from inputs
+  $(form).find('.form-group .form-control-feedback').remove()
+  // hide any visible help text
+  $(form).find('.help-block').hide()
 }
 
 // showAlert(mode, message)
@@ -127,7 +169,6 @@ const initTempView = () => {
   appendView('.temp-div', 'file-delete')
 }
 
-
 //  showChangePasswordSuccess()
 //    password changed successfully
 
@@ -194,6 +235,9 @@ module.exports = {
   setPublicMode,
   setPrivateMode,
   showAlert,
+  formAlert,
+  clearForm,
+  clearFormAlerts,
   closeError,
   closeAlert,
   showChangePasswordSuccess,
