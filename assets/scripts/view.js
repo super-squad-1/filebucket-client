@@ -138,7 +138,6 @@ const appendView = (element, hbsFile, params) => {
 const prependView = (element, hbsFile, params) => {
   const template = require(`./templates/${hbsFile}.handlebars`)
 
-
   const content = template(params)
   $(element).prepend(content)
 }
