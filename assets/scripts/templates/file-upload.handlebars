@@ -1,12 +1,10 @@
-<form id="multipart-form-data" enctype="multipart/form-data" class="form form-inline">
+<!-- <form id="multipart-form-data" enctype="multipart/form-data" class="form form-inline">
   <fieldset>
     <legend>File Upload</legend>
     <p>enctype="multipart/form-data"</p>
     <div class="form-group">
       <label for="file-upload-title" class="sr-only">Title</label>
-      <!-- <div class="input-group"> -->
         <input type="text" class="form-control" name="file[title]" id="file-upload-title" placeholder="Title" value="">
-      <!-- </div> -->
     </div>
     <div class="form-group">
       <label class="btn btn-primary" for="file-upload-select">
@@ -21,5 +19,35 @@
 
     <span id="upload-file-info"></span>
 
+  </fieldset>
+</form> -->
+
+<!-- <form id="multipart-form-data" enctype="multipart/form-data">
+  <fieldset>
+    <legend>enctype="multipart/form-data"</legend>
+    <label>
+      Title
+      <input type="text" name="image[title]" id="file-upload-title">
+    </label>
+    <label>
+      Image
+      <input type="file" name="image[file]" id="file-upload-file">
+    </label>
+    <input type="submit" name="submit" value="Upload">
+  </fieldset>
+</form> -->
+
+<form id="multipart-form-data" enctype="multipart/form-data">
+  <fieldset>
+    <legend>enctype="multipart/form-data"</legend>
+    <label>
+      Title
+      <input type="text" name="file-upload-title" id="file-upload-title">
+    </label>
+    <label>
+      Image
+      <input type="file" name="file-upload-file" id="file-upload-file">
+    </label>
+    <input type="submit" name="submit" value="Upload">
   </fieldset>
 </form>

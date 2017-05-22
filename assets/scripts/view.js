@@ -157,9 +157,9 @@ const initTempView = () => {
   // render private view to navbar-div
   renderView('.navbar-div', 'nav-private')
   // render file list view to content-div
-  renderView('.content-div', 'file-list')
+  // renderView('.content-div', 'file-list')
   // append file table view to content-div
-  appendView('.content-div', 'file-table')
+  renderView('.content-div', 'file-table')
   // render sidebar view to sidebar-div
   // renderView('.sidebar-div', './templates/sidebar')
 
@@ -255,8 +255,6 @@ const addHandlers = () => {
     showUpload()
     // console.log(`list-group-item clicked`)
   })
-
-  $('body').on('submit', '#multipart-form-data', uploadEvents.createUploadMultiPart)
 }
 
 module.exports = {

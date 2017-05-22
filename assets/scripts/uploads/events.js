@@ -1,13 +1,35 @@
 'use strict'
 
+const getFormFields = require('../../../lib/get-form-fields')
+
 const uploadApi = require('./api')
 const uploadUi = require('./ui')
 
 const createUploadMultiPart = function (event) {
   event.preventDefault()
-  console.log('it did something in multipart')
+  console.log(`createUploadMultiPart Event: ${event.target}`)
 
-  const data = new FormData(event.target)
+  const myForm = document.getElementById('multipart-form-data')
+
+  const data = new FormData(myForm)
+
+  // const myForm = event.target
+  //
+  // const title = $('#file-upload-title').val()
+  // const file = $('#file-upload-file').val()
+  //
+  // const data = new FormData()
+  // data.append('title', title)
+  // data.append('file', file)
+
+  // const data = {
+  //   title: title,
+  //   file: file
+  // }
+
+  debugger
+
+  console.log(`createUploadMultiPart data: ${data}`)
 
   uploadApi.createMulti(data)
     .then(uploadUi.success)
@@ -15,17 +37,14 @@ const createUploadMultiPart = function (event) {
 }
 
 const addHandlers = function () {
-  $('body').on('change', '#file-selector', () => {
-    const test = $(event.target).val()
-    // debugger
-    $('#file-upload-info').html(test)
-      // .replace(/.*[\/\\]/, '')))
-  })
+  $('body').on('submit', '#multipart-form-data', createUploadMultiPart)
+
+  // $('body').on('change', '#file-selector', () => {
+  //   const filename = $(event.target).val().replace(/.*[\/\\]/, '')
+  //   // file-upload-title
+  //   $('#file-upload-title').val(filename)
+  // })
 }
-// onchange="$('#upload-file-info')
-//   .html($(this)
-//   .val()
-//   .replace(/.*[\/\\]/, ''));"
 
 module.exports = {
   createUploadMultiPart,
