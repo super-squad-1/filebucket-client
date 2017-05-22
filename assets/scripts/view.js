@@ -74,16 +74,16 @@ const showAlert = (mode, message) => {
   // convert mode label to bootstrap class
   mode = (mode === 'error') ? 'danger' : 'info'
   // render handlebars template for alert
-  const alertTemplate = require('./templates/alert.handlebars')
-  const content = alertTemplate({ mode: mode, message: message })
+  // const alertTemplate = require('./templates/alert.handlebars')
+  // const content = alertTemplate({ mode: mode, message: message })
 
   // if there's already an alert
   if ($('.alert').length) {
     // replace the existing alert
-    renderView('.alert', 'alert')
+    renderView('.alert', 'alert', { mode: mode, message: message })
   } else {
     // insert a new alert
-    prependView('.content-div', 'alert')
+    prependView('.content-div', 'alert', { mode: mode, message: message })
   }
 }
 
@@ -117,27 +117,29 @@ const initView = () => {
 // renderView(element, hbsFile)
 // renders the template and replaces the element
 
-const renderView = (element, hbsFile) => {
+const renderView = (element, hbsFile, params) => {
   const template = require(`./templates/${hbsFile}.handlebars`)
-  const content = template()
+  const content = template(params)
   $(element).html(content)
 }
 
 // appendView(element, filepath)
 // renders the template and appends it to the element
 
-const appendView = (element, hbsFile) => {
+const appendView = (element, hbsFile, params) => {
   const template = require(`./templates/${hbsFile}.handlebars`)
-  const content = template()
+  const content = template(params)
   $(element).append(content)
 }
 
 // prependView(element, filepath)
 // renders the template and appends it to the element
 
-const prependView = (element, hbsFile) => {
+const prependView = (element, hbsFile, params) => {
   const template = require(`./templates/${hbsFile}.handlebars`)
-  const content = template()
+
+
+  const content = template(params)
   $(element).prepend(content)
 }
 
