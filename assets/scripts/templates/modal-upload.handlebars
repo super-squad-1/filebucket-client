@@ -1,0 +1,46 @@
+
+
+<div id="upload-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Are you sure?</h4>
+      </div>
+      <div class="modal-body">
+        <form id="multipart-form-data" enctype="multipart/form-data" class="form form-inline">
+          <fieldset>
+            <legend>File Upload</legend>
+            <p>enctype="multipart/form-data"</p>
+            <div class="form-group">
+              <label for="file-upload-title" class="sr-only">Title</label>
+              <!-- <div class="input-group"> -->
+                <input type="text" class="form-control" name="file[title]" id="file-upload-title" placeholder="Title" value="">
+              <!-- </div> -->
+            </div>
+            <div class="form-group">
+              <label class="btn btn-primary" for="my-file-selector">
+                <input id="my-file-selector"
+                  type="file"
+                  style="display:none;"
+                  onchange="$('#upload-file-info')
+                    .html($(this)
+                    .val()
+                    .replace(/.*[\/\\]/, ''));">
+                Choose File
+              </label>
+            </div>
+
+            <span id="upload-file-info"></span>
+
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</button>
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="delete-modal-confirm"><span class="glyphicon glyphicon-trash"></span> Delete</button> -->
+      </div>
+    </div>
+  </div>
+</div>
