@@ -46,8 +46,6 @@ const removeView = (element) => {
   $(element).remove().slideUp(250)
 }
 
-
-
 // showAlert(mode, message)
 //    displays global alert box for info or warning
 
