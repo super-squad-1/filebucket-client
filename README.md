@@ -28,6 +28,8 @@ As an authenticated user, I want to change my password so that my account remain
 **User Story: User Sign Out (Destroy)**
 As an authenticated user, I want to sign out so I can end my session with my account secure.
 
+### File Management Stories
+
 **User Story: File Upload (Create)**
 As an authenticated user, I want to upload a file so that is accessible to myself and others.
 
