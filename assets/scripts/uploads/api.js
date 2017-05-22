@@ -3,6 +3,7 @@
 const config = require('../config')
 
 const createMulti = function (data) {
+  console.log(`createMulti data: ${data}`)
   return $.ajax({
     // ajax options go here
     method: 'POST',
