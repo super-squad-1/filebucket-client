@@ -198,19 +198,20 @@ const showChangePasswordFailure = () => {
   // showAlert(`error`, `For highly complex reasons, your password couldn't be changed.`)
 }
 
-const showUpload = (id) => {
+const showUpload = () => {
   // render handlebars template with data-id for item
   // const contentTemplate = require('./templates/modal-confirm-delete.handlebars')
   // const content = contentTemplate({id: id})
+  appendView('body', 'modal-upload')
 
   // if there's already a modal
-  if ($('#upload-modal').length) {
-    // replace the existing modal
-    renderView('#upload-modal', 'modal-upload')
-  } else {
-    // insert a new alert
-    appendView('body', 'modal-upload')
-  }
+  // if ($('#upload-modal').length) {
+  //   // replace the existing modal
+  //   renderView('#upload-modal', 'modal-upload')
+  // } else {
+  //   // insert a new alert
+  //   appendView('body', 'modal-upload')
+  // }
 
   // show the hidden modal
   $('#upload-modal').modal('show')
