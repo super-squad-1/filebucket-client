@@ -1,6 +1,6 @@
 'use strict'
 
-const uploadEvents = require('./uploads/events')
+// const uploadEvents = require('./uploads/events')
 //
 //  PUBLIC AND PRIVATE MODES
 //
@@ -164,9 +164,9 @@ const initTempView = () => {
   // renderView('.sidebar-div', './templates/sidebar')
 
   // upload file form
-  renderView('.temp-div', 'file-upload')
+  // renderView('.temp-div', 'file-upload')
   // update file form
-  appendView('.temp-div', 'file-update')
+  renderView('.temp-div', 'file-update')
   // delete file form
   appendView('.temp-div', 'file-delete')
 }
