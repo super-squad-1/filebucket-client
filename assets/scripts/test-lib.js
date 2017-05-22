@@ -147,20 +147,6 @@ const confirmDelete = (id) => {
   $('#delete-modal').modal('show')
 }
 
-const disableNewItem = () => {
-  // disable Add Snippet button so only one new item dialog can be open
-  $('#new-item-link').addClass('.disabled')
-  $('#new-item-link').attr('disabled', true)
-  $('#new-item-link').prop('disabled', true)
-}
-
-const enableNewItem = () => {
-  // re-enable add snippet button
-  $('#new-item-link').removeClass('.disabled')
-  $('#new-item-link').attr('disabled', false)
-  $('#new-item-link').prop('disabled', false)
-}
-
 //
 //  PUBLIC AND PRIVATE MODES
 //
