@@ -1,10 +1,9 @@
 'use strict'
 
-const config = require('../config')
 const store = require('../store')
+const config = require('../config')
 
 const createMulti = function (data) {
-  console.log(`createMulti data: ${data}`)
   return $.ajax({
     // ajax options go here
     method: 'POST',
@@ -18,6 +17,35 @@ const createMulti = function (data) {
   })
 }
 
+const updateFile = (data) => {
+  // debugger
+  // console.log('update', data)
+  return $.ajax({
+    url: config.apiOrigin + '/update/' + data,
+    // data holds both id and title so no need for id
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const deleteFile = (data) => {
+  // debugger
+  // console.log('update', data)
+  return $.ajax({
+    url: config.apiOrigin + '/uploads/' + data.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
-  createMulti
+  createMulti,
+  updateFile,
+  deleteFile
 }

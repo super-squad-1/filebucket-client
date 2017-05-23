@@ -1,5 +1,6 @@
 'use strict'
 
+// const uploadEvents = require('./uploads/events')
 //
 // VIEW INITIALIZERS
 //
@@ -161,10 +162,6 @@ const closeAlert = () => {
   $('.alert').alert('close')
 }
 
-//
-// SUCCESS/FAILURE HANDLERS
-//
-
 // showChangePasswordSuccess()
 // password changed successfully
 
@@ -191,16 +188,13 @@ const showChangePasswordFailure = () => {
   showAlert(`error`, `For highly complex reasons, your password couldn't be changed.`)
 }
 
-//
-// MODAL HANDLING FUNCTIONS
-//
-
 const showUpload = () => {
-  // render handlebars template
+  // render handlebars template with data-id for item
   appendView('body', 'modal-upload')
 
   // if there's already a modal
   // if ($('#upload-modal').length) {
+
   //  // replace the existing modal
   //  renderView('#upload-modal', 'modal-upload')
   // } else {
@@ -213,6 +207,19 @@ const showUpload = () => {
 }
 
 const addHandlers = () => {
+  // event handler for sign in form
+  // $('.content-div').on('submit', '#sign-in', () => {
+  //   // TEMPORARY
+  //   initTempView()
+  // })
+
+  // event handler for sign in form
+  // $('.navbar-div').on('click', '#sign-out-btn', () => {
+  //   // TEMPORARY
+  //   clearView('.temp-div')
+  //   initView()
+  // })
+
   // TEMPORARY HANDLERS FOR DEV TESTING
   // event handler for table body row
   $('.content-div').on('click', 'tbody tr', () => {
