@@ -47,10 +47,11 @@ const addHandlers = function () {
 const onDelete = function (event) {
   event.preventDefault()
   const file = getFormFields(event.target).file
+  console.log('in delete: ', event)
   if (file.id.length !== 0) {
     uploadApi.deleteFile(file)
-    .then(uploadUi.updateFileSuccess)
-    .catch(uploadUi.updateFileFailure)
+    .then(uploadUi.deleteFileSuccess)
+    .catch(uploadUi.deleteFileFailure)
   }
 }
 
