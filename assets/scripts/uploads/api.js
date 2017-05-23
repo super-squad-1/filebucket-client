@@ -1,13 +1,16 @@
 'use strict'
 
+const store = require('../store')
 const config = require('../config')
-const store = require('../store.js')
 
 const createMulti = function (data) {
   return $.ajax({
     // ajax options go here
     method: 'POST',
     url: config.apiOrigin + '/uploads',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
     data,
     contentType: false,
     processData: false
@@ -52,9 +55,21 @@ const downloadFile = (data) => {
   })
 }
 
+const getFiles = (data) => {
+  // debugger
+  // console.log('api.data', data)
+  // console.log('api.data.id', data.id)
+  return $.ajax({
+    url: config.apiOrigin + '/uploads/' + data,
+    method: 'GET',
+    data: data
+  })
+}
+
 module.exports = {
   createMulti,
   updateFile,
   deleteFile,
-  downloadFile
+  downloadFile,
+  getFiles
 }

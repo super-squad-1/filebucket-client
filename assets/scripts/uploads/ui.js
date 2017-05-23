@@ -32,6 +32,14 @@ const downloadFileFailure = (error) => {
   console.log('error on download file in ', error)
 }
 
+const getFilesSuccess = (data) => {
+  console.log('success get files')
+}
+
+const getFilesFailure = (error) => {
+  console.log('error on get files in ', error)
+}
+
 module.exports = {
   success,
   error,
@@ -40,5 +48,7 @@ module.exports = {
   deleteFileSuccess,
   deleteFileFailure,
   downloadFileSuccess,
-  downloadFileFailure
+  downloadFileFailure,
+  getFilesSuccess,
+  getFilesFailure
 }
