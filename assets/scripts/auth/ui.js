@@ -10,7 +10,7 @@ const view = require('../view')
 
 const signUpFailure = () => {
   // set alert error
-  view.showAlert(`error`, `No dice. Something went wrong creating your account.`)
+  view.showAlert(`error`, `Something went wrong creating your account.`)
   // clear sign up form
   view.clearForm('#sign-up')
 }
@@ -30,7 +30,7 @@ const signInSuccess = (response) => {
 
 const signInFailure = () => {
   // set alert error
-  view.showAlert(`error`, `Looks like those are some bad credentials.`)
+  view.showAlert(`error`, `There was an issue with your credentials.`)
   // clear sign up form
   view.clearForm('#sign-in')
 }

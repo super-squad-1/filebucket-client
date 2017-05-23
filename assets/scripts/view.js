@@ -1,6 +1,5 @@
 'use strict'
 
-// const uploadEvents = require('./uploads/events')
 //
 // VIEW INITIALIZERS
 //
@@ -29,9 +28,9 @@ const initTempView = () => {
   // development testing forms
 
   // update file form
-  renderView('.temp-div', 'file-update')
+  // renderView('.temp-div', 'file-update')
   // delete file form
-  appendView('.temp-div', 'file-delete')
+  // appendView('.temp-div', 'file-delete')
 }
 
 //
@@ -61,7 +60,6 @@ const appendView = (element, hbsFile, params) => {
 
 const prependView = (element, hbsFile, params) => {
   const template = require(`./templates/${hbsFile}.handlebars`)
-
   const content = template(params)
   $(element).prepend(content)
 }
@@ -207,19 +205,6 @@ const showUpload = () => {
 }
 
 const addHandlers = () => {
-  // event handler for sign in form
-  // $('.content-div').on('submit', '#sign-in', () => {
-  //   // TEMPORARY
-  //   initTempView()
-  // })
-
-  // event handler for sign in form
-  // $('.navbar-div').on('click', '#sign-out-btn', () => {
-  //   // TEMPORARY
-  //   clearView('.temp-div')
-  //   initView()
-  // })
-
   // TEMPORARY HANDLERS FOR DEV TESTING
   // event handler for table body row
   $('.content-div').on('click', 'tbody tr', () => {
@@ -235,10 +220,9 @@ const addHandlers = () => {
     console.log(`file-name clicked`)
   })
 
+  // event handler for clicking the 'upload' button in the nav
   $('.navbar-div').on('click', '#show-upload-button', () => {
-    // TEMPORARY
     showUpload()
-    // console.log(`list-group-item clicked`)
   })
 
   // DROPDOWN MENU EVENTS

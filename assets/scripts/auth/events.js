@@ -5,9 +5,6 @@ const getFormFields = require('../../../lib/get-form-fields')
 // api and ui methods for authentication
 const authApi = require('./api')
 const authUi = require('./ui')
-// api and ui methods for items
-// const itemApi = require('../items/api')
-// const itemUi = require('../items/ui')
 // view controller methods
 const view = require('../view')
 
