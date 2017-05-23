@@ -22,18 +22,17 @@ const onSignUp = function (event) {
 
   // validate input fields
   if (!data.credentials.email) {
-    view.formAlert('#sign-up', '#sign-up-email')
+    // view.formAlert('#sign-up', '#sign-up-email')
   } else if (!data.credentials.password) {
-    view.formAlert('#sign-up', '#sign-up-password')
+    // view.formAlert('#sign-up', '#sign-up-password')
   } else if (!data.credentials.password_confirmation) {
-    view.formAlert('#sign-up', '#sign-up-password-confirm')
+    // view.formAlert('#sign-up', '#sign-up-password-confirm')
   } else if (data.credentials.password !== data.credentials.password_confirmation) {
-    view.formAlert('#sign-up', '#sign-up-password-confirm')
+    // view.formAlert('#sign-up', '#sign-up-password-confirm')
   } else {
     // make API calls and set up handlers for callbacks
     authApi.signUp(data)
-      .then(authUi.signUpSuccess)
-      // after sign-up, automatically sign in
+      // .then(authUi.signUpSuccess)
       .then(() => {
         authApi.signIn(data)
           .then(authUi.signInSuccess)
@@ -59,9 +58,9 @@ const onSignIn = function (event) {
 
   // validate input fields
   if (!data.credentials.email) {
-    view.formAlert('#sign-in', '#sign-in-email')
+    // view.formAlert('#sign-in', '#sign-in-email')
   } else if (!data.credentials.password) {
-    view.formAlert('#sign-in', '#sign-in-password')
+    // view.formAlert('#sign-in', '#sign-in-password')
   } else {
     // make API calls and set up handlers for callbacks
     authApi.signIn(data)
@@ -85,11 +84,11 @@ const onChangePassword = function (event) {
   event.preventDefault()
   // validate input fields
   if (!data.passwords.old) {
-    view.formAlert('#change-password', '#change-password-old')
+    // view.formAlert('#change-password', '#change-password-old')
   } else if (!data.passwords.new) {
-    view.formAlert('#change-password', '#change-password-new')
+    // view.formAlert('#change-password', '#change-password-new')
   } else if (data.passwords.new !== data.passwords.password_confirmation) {
-    view.formAlert('#change-password', '#change-password-confirm')
+    // view.formAlert('#change-password', '#change-password-confirm')
   } else {
     // make API call and set up handlers for callbacks
     authApi.changePassword(data)
@@ -128,11 +127,10 @@ const addHandlers = () => {
   $('.content-div').on('show.bs.tab', 'a[data-toggle="tab"]', function (event) {
     // clear fields from previous active tab
     $($(event.relatedTarget).attr('href')).find('.form-control').val('')
-
     // remove validation errors
-    view.clearFormAlerts('#' + $($(event.relatedTarget).attr('href')).find('form').attr('id'))
+    // view.clearFormAlerts('#' + $($(event.relatedTarget).attr('href')).find('form').attr('id'))
     // close any errors before proceeding
-    view.closeError()
+    // view.closeError()
   })
 }
 
