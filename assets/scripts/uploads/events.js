@@ -1,6 +1,6 @@
 'use strict'
 
-// const getFormFields = require('../../../lib/get-form-fields')
+const getFormFields = require('../../../lib/get-form-fields')
 
 const uploadApi = require('./api')
 const uploadUi = require('./ui')
@@ -35,13 +35,32 @@ const createUploadMultiPart = function (event) {
 
 const addHandlers = function () {
   $('body').on('submit', '#multipart-form-data', createUploadMultiPart)
-
+  $('body').on('submit', '#file-delete', onDelete)
+  // $('body').on('submit', '#file-update', onUpdate)
   $('body').on('change', '#file-selector', () => {
     const filename = $(event.target).val().replace(/.*[\/\\]/, '')
     // file-upload-title
     $('#file-upload-title').val(filename)
   })
 }
+
+const onDelete = function (event) {
+  event.preventDefault()
+  const file = getFormFields(event.target).file
+  if (file.id.length !== 0) {
+    uploadApi.deleteFile(file)
+    .then(uploadUi.updateFileSuccess)
+    .catch(uploadUi.updateFileFailure)
+  }
+}
+
+// const onUpdate = function (event) {
+//   event.preventDefault()
+//   const data = getFormFields(event.target)
+//   uploadApi.updateFile(data)
+//   .then(uploadUi.updateFileSuccess)
+//   .catch(uploadUi.updateFileFailure)
+// }
 
 module.exports = {
   createUploadMultiPart,
