@@ -30,9 +30,9 @@ const signInSuccess = (response) => {
 
 const signInFailure = () => {
   // set alert error
-  // view.showAlert(`error`, `Looks like those are some bad credentials.`)
+  view.showAlert(`error`, `Looks like those are some bad credentials.`)
   // clear sign up form
-  // view.clearForm('#sign-in')
+  view.clearForm('#sign-in')
 }
 
 // changePasswordSuccess()

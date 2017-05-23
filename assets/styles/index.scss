@@ -18,14 +18,9 @@ body.container-fluid {
   display: none;
 }
 
-// set temporary min-height on sidebar
-// .sidebar-div {
-//   min-height: 160px;
-// }
-
-// temporary form padding for test forms
-.form {
-  margin-bottom: 30px;
+// remove top border from tab ui on public authentication forms
+.tab-content .panel {
+  border-top: 0;
 }
 
 // make file-name anchor text appear on the left
@@ -42,4 +37,22 @@ td {
 // make table rows appear clickable
 tbody tr {
   cursor: pointer;
+}
+
+// file input test
+.file-upload {
+  overflow: hidden;
+  position: relative;
+}
+
+.file-upload input.upload {
+  cursor: pointer;
+  filter: alpha(opacity = 0);
+  // font-size: 20px;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
