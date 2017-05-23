@@ -36,6 +36,7 @@ const createUploadMultiPart = function (event) {
 const addHandlers = function () {
   $('body').on('submit', '#multipart-form-data', createUploadMultiPart)
   $('body').on('submit', '#file-delete', onDelete)
+  // $('body').on('submit', '#file-delete', onDelete)
   $('body').on('submit', '#file-update', onUpdate)
   $('body').on('change', '#file-selector', () => {
     const filename = $(event.target).val().replace(/.*[\/\\]/, '')
