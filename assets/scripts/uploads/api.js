@@ -41,8 +41,20 @@ const deleteFile = (data) => {
   })
 }
 
+const downloadFile = (data) => {
+  // debugger
+  // console.log('api.data', data)
+  // console.log('api.data.id', data.id)
+  return $.ajax({
+    url: config.apiOrigin + '/uploads/' + data.id,
+    method: 'GET',
+    data: data
+  })
+}
+
 module.exports = {
   createMulti,
   updateFile,
-  deleteFile
+  deleteFile,
+  downloadFile
 }
