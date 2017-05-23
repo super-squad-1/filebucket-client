@@ -36,7 +36,7 @@ const createUploadMultiPart = function (event) {
 const addHandlers = function () {
   $('body').on('submit', '#multipart-form-data', createUploadMultiPart)
   $('body').on('submit', '#file-delete', onDelete)
-  // $('body').on('submit', '#file-update', onUpdate)
+  $('body').on('submit', '#file-update', onUpdate)
   $('body').on('change', '#file-selector', () => {
     const filename = $(event.target).val().replace(/.*[\/\\]/, '')
     // file-upload-title
@@ -54,13 +54,13 @@ const onDelete = function (event) {
   }
 }
 
-// const onUpdate = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   uploadApi.updateFile(data)
-//   .then(uploadUi.updateFileSuccess)
-//   .catch(uploadUi.updateFileFailure)
-// }
+const onUpdate = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  uploadApi.updateFile(data)
+  .then(uploadUi.updateFileSuccess)
+  .catch(uploadUi.updateFileFailure)
+}
 
 module.exports = {
   createUploadMultiPart,

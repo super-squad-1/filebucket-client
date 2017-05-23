@@ -14,16 +14,16 @@ const createMulti = function (data) {
   })
 }
 
-// const updateFile = (data) => {
-//   return $.ajax({
-//     url: config.apiOrigin + '/update/' + data.id,
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data: data
-//   })
-// }
+const updateFile = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/update/' + data.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
 
 const deleteFile = (data) => {
   console.log('data', data)
@@ -39,6 +39,6 @@ const deleteFile = (data) => {
 
 module.exports = {
   createMulti,
-  // updateFile,
+  updateFile,
   deleteFile
 }
