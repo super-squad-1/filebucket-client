@@ -27,7 +27,6 @@ const addHandlers = function () {
     const filename = $(event.target).val().replace(/.*[\/\\]/, '')
     // file-upload-title
     $('#file-upload-title').val(filename)
-
     $(event.target).closest('.form-group').find('.help-block').show()
   })
 }
