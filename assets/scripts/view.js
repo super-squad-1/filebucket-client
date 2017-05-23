@@ -166,9 +166,9 @@ const initTempView = () => {
   // upload file form
   // renderView('.temp-div', 'file-upload')
   // update file form
-  renderView('.temp-div', 'file-update')
+  // renderView('.temp-div', 'file-update')
   // delete file form
-  appendView('.temp-div', 'file-delete')
+  // appendView('.temp-div', 'file-delete')
 }
 
 //  showChangePasswordSuccess()
