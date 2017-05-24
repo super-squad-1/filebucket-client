@@ -230,8 +230,19 @@ const showUpdate = (data) => {
 }
 
 const showFiles = (files) => {
-  console.log('view.showFiles')
-  console.log(`${files}`)
+  files.forEach(function (e) {
+    const time = new Date(e.updatedAt)
+    const finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
+    e.updatedAt = finalString
+  })
+  files.forEach(function (e) {
+    const time = new Date(e.createdAt)
+    const finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
+    e.createdAt = finalString
+  })
+  console.log(files)
+  console.log(files[0].createdAt)
+  console.log(files[1].updatedAt)
   renderView('.content-div', 'files', {files: files})
 }
 
