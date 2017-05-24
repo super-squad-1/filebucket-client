@@ -5,6 +5,9 @@ const getFormFields = require('../../../lib/get-form-fields')
 // api and ui methods for authentication
 const authApi = require('./api')
 const authUi = require('./ui')
+// api and ui methods for authentication
+const uploadApi = require('../uploads/api')
+const uploadUi = require('../uploads/ui')
 // view controller methods
 const view = require('../view')
 
@@ -34,11 +37,11 @@ const onSignUp = function (event) {
       .then(() => {
         authApi.signIn(data)
           .then(authUi.signInSuccess)
-          // .then(() => {
-          //   itemApi.getItems()
-          //     .then(itemUi.getItemsSuccess)
-          //     .catch(itemUi.getItemsFailure)
-          // })
+          .then(() => {
+            uploadApi.getFiles()
+              .then(uploadUi.getFilesSuccess)
+              .catch(uploadUi.getFilesFailure)
+          })
           .catch(authUi.signInFailure)
       })
       .catch(authUi.signUpFailure)
@@ -63,11 +66,11 @@ const onSignIn = function (event) {
     // make API calls and set up handlers for callbacks
     authApi.signIn(data)
       .then(authUi.signInSuccess)
-      // .then(() => {
-      //   itemApi.getItems()
-      //     .then(itemUi.getItemsSuccess)
-      //     .catch(itemUi.getItemsFailure)
-      // })
+      .then(() => {
+        uploadApi.getFiles()
+          .then(uploadUi.getFilesSuccess)
+          .catch(uploadUi.getFilesFailure)
+      })
       .catch(authUi.signInFailure)
   }
 }

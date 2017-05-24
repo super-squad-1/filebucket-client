@@ -23,7 +23,7 @@ const initTempView = () => {
   // render private view to navbar-div
   renderView('.navbar-div', 'nav-private')
   // append file table view to content-div
-  renderView('.content-div', 'file-table')
+  // renderView('.content-div', 'file-table')
 
   // development testing forms
 
@@ -204,6 +204,12 @@ const showUpload = () => {
   $('#upload-modal').modal('show')
 }
 
+const showFiles = (files) => {
+  console.log('view.showFiles')
+  console.log(`${files}`)
+  renderView('.content-div', 'files', {files: files})
+}
+
 const addHandlers = () => {
   // TEMPORARY HANDLERS FOR DEV TESTING
   // event handler for table body row
@@ -257,5 +263,6 @@ module.exports = {
   closeAlert,
   showChangePasswordSuccess,
   showChangePasswordFailure,
-  showUpload
+  showUpload,
+  showFiles
 }

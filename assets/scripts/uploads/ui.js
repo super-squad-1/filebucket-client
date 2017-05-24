@@ -1,5 +1,7 @@
 'use strict'
 
+const view = require('../view.js')
+
 const success = function (data) {
   console.log('success data is:', data)
 }
@@ -32,12 +34,15 @@ const downloadFileFailure = (error) => {
   console.log('error on download file in ', error)
 }
 
-const getFilesSuccess = (data) => {
-  console.log('success get files')
+const getFilesSuccess = (response) => {
+  console.log('uploads.events.getFilesSuccess: response')
+  console.log(`${response}`)
+
+  view.showFiles(response.uploads)
 }
 
-const getFilesFailure = (error) => {
-  console.log('error on get files in ', error)
+const getFilesFailure = () => {
+  view.showAlert(`error`, `Hmmm. Couldn't get your list of files...`)
 }
 
 module.exports = {

@@ -52,11 +52,9 @@ const onUpdate = function (event) {
   }
 }
 
-const onGetFiles = function (event) {
-  console.log(data)
-  const data = getFormFields(event.target)
-  event.preventDefault()
-  uploadUi.getAllFiles(data)
+const onGetFiles = function () {
+  console.log('uploads.events.onGetFiles')
+  uploadApi.getAllFiles()
     .then(uploadUi.getFilesSuccess)
     .catch(uploadUi.getFilesFailure)
 }

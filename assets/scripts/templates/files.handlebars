@@ -1,0 +1,73 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="file-item file-name col-sm-8 col-xs-8">
+        <span class="glyphicon glyphicon-th-list"></span>
+        <strong></strong>
+      </th>
+      <th class="file-item file-date col-sm-2 hidden-xs">
+        <strong>Created</strong>
+      </th>
+      <th class="file-item file-date col-sm-2 col-xs-4">
+        <strong>Modified</strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each files as |file|}}
+    <tr data-id="{{file.id}}">
+      <td class="file-name col-sm-6 col-xs-8">
+        <span class="file-icon glyphicon glyphicon-file"></span>
+        <button class="btn btn-link">{{file.name}}</button>
+      </td>
+      <td class="file-date file-date-created col-sm-2 hidden-xs">{{file.createdAt}}</td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-2">{{file.updatedAt}}</td>
+      <td class="col-sm-2 col-xs-2">
+        <div class="btn-group">
+          <button class="glyphicon glyphicon-trash" id="each-file-delete"></button>
+          <button class="glyphicon glyphicon-pencil" id="each-file-update"></button>
+          <button class="glyphicon glyphicon-download-alt"id="each-file-download"></button>
+        </div>
+      </td>
+      <!-- <td class="col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>
+      <td class="col-sm-2 col-xs-4"><button class="glyphicon glyphicon-pencil" id="each-file-update"></button></td>
+      <td class="col-sm-2 col-xs-4"><button class="glyphicon glyphicon-download-alt"id="each-file-download"></button></td> -->
+    </tr>
+    {{/each}}
+
+    <!-- <tr>
+      <td class="file-name col-sm-8 col-xs-8">
+        <span class="file-icon glyphicon glyphicon-folder-open"></span>
+        <button class="btn btn-link">Folder Name</button>
+      </td>
+      <td class="file-date file-date-created col-sm-2 hidden-xs">05-20-2017</td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4">05-20-2017</td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-pencil" id="each-file-update"></button></td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-download-alt"id="each-file-download"></button></td>
+
+    </tr>
+    <tr>
+      <td class="file-name col-sm-8 col-xs-8">
+        <span class="file-icon glyphicon glyphicon-file"></span>
+        <button class="btn btn-link">File Name</button>
+      </td>
+      <td class="file-date file-date-created col-sm-2 hidden-xs">05-20-2017</td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4">05-20-2017</td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-pencil" id="each-file-update"></button></td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-download-alt"id="each-file-download"></button></td>
+    </tr>
+    <tr>
+      <td class="file-name col-sm-8 col-xs-8">
+        <span class="file-icon glyphicon glyphicon-file"></span>
+        <button class="btn btn-link">File Name</button>
+      </td>
+      <td class="file-date file-date-created col-sm-2 hidden-xs">05-20-2017</td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4">05-20-2017</td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-pencil" id="each-file-update"></button></td>
+      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-download-alt" id="each-file-download"></button></td>
+    </tr> -->
+  </tbody>
+</table>

@@ -55,14 +55,11 @@ const downloadFile = (data) => {
   })
 }
 
-const getFiles = (data) => {
-  // debugger
-  // console.log('api.data', data)
-  // console.log('api.data.id', data.id)
+const getFiles = () => {
+  console.log('uploadApi.getFiles')
   return $.ajax({
-    url: config.apiOrigin + '/uploads/' + data,
-    method: 'GET',
-    data: data
+    url: config.apiOrigin + '/uploads',
+    method: 'GET'
   })
 }
 
