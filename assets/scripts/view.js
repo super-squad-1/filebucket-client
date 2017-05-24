@@ -23,14 +23,14 @@ const initTempView = () => {
   // render private view to navbar-div
   renderView('.navbar-div', 'nav-private')
   // append file table view to content-div
-  renderView('.content-div', 'file-table')
+  // renderView('.content-div', 'file-table')
 
   // development testing forms
 
   // update file form
-  renderView('.temp-div', 'file-update')
+  // renderView('.temp-div', 'file-update')
   // delete file form
-  appendView('.temp-div', 'file-delete')
+  // appendView('.temp-div', 'file-delete')
 }
 
 //
@@ -60,7 +60,6 @@ const appendView = (element, hbsFile, params) => {
 
 const prependView = (element, hbsFile, params) => {
   const template = require(`./templates/${hbsFile}.handlebars`)
-
   const content = template(params)
   $(element).prepend(content)
 }
@@ -161,10 +160,6 @@ const closeAlert = () => {
   $('.alert').alert('close')
 }
 
-//
-// SUCCESS/FAILURE HANDLERS
-//
-
 // showChangePasswordSuccess()
 // password changed successfully
 
@@ -191,16 +186,13 @@ const showChangePasswordFailure = () => {
   showAlert(`error`, `For highly complex reasons, your password couldn't be changed.`)
 }
 
-//
-// MODAL HANDLING FUNCTIONS
-//
-
 const showUpload = () => {
-  // render handlebars template
+  // render handlebars template with data-id for item
   appendView('body', 'modal-upload')
 
   // if there's already a modal
   // if ($('#upload-modal').length) {
+
   //  // replace the existing modal
   //  renderView('#upload-modal', 'modal-upload')
   // } else {
@@ -212,26 +204,16 @@ const showUpload = () => {
   $('#upload-modal').modal('show')
 }
 
+const showFiles = (files) => {
+  console.log('view.showFiles')
+  console.log(`${files}`)
+  renderView('.content-div', 'files', {files: files})
+}
+
 const addHandlers = () => {
-  // TEMPORARY HANDLERS FOR DEV TESTING
-  // event handler for table body row
-  $('.content-div').on('click', 'tbody tr', () => {
-    // TEMPORARY
-    console.log(`table-row clicked`)
-  })
-
-  // event handler for file name link
-  $('.content-div').on('click', '.file-name button', (event) => {
-    // keeps table row from registering click event, too
-    event.stopPropagation()
-    // TEMPORARY
-    console.log(`file-name clicked`)
-  })
-
+  // event handler for clicking the 'upload' button in the nav
   $('.navbar-div').on('click', '#show-upload-button', () => {
-    // TEMPORARY
     showUpload()
-    // console.log(`list-group-item clicked`)
   })
 
   // DROPDOWN MENU EVENTS
@@ -266,5 +248,6 @@ module.exports = {
   closeAlert,
   showChangePasswordSuccess,
   showChangePasswordFailure,
-  showUpload
+  showUpload,
+  showFiles
 }

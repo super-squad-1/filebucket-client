@@ -1,13 +1,33 @@
 # Filebucket client
 
-* A short description of your application
-* A brief explanation of the technologies (Node modules, Express middleware etc) used.
-* A couple of paragraphs detailing the general approach you took.
-* Notes on any unsolved problems or major hurdles your team had to overcome.
-* Installation instructions for any dependencies.
-* A link to your user stories – who are your users, what do they want, and why?
-* A link to your ERD - what data models does your app use?
-* A link to your wireframes – sketches of major views / interfaces in your application.
+<!-- * A short description of your application -->
+Filebucket is a Dropbox-like app that allows users to upload files into a
+virtual file system. Anyone can read or dowload files and owners can delete
+or rename their own files. Filebucket stores information for the files on a
+MongooseDB database and stores the files in and AWS S3 bucket. The client is
+built using Bootstrap and Handlebars
+
+<!-- * A brief explanation of the technologies (Node modules, Express middleware etc) used. -->
+
+## Approach
+<!-- * A couple of paragraphs detailing the general approach you took. -->
+
+## Challenges
+<!-- * Notes on any unsolved problems or major hurdles your team had to overcome. -->
+
+## Dependencies
+<!-- * Installation instructions for any dependencies. -->
+
+## User Stories
+<!-- * A link to your user stories – who are your users, what do they want, and why? -->
+
+## Data Models
+<!-- * A link to your ERD - what data models does your app use? -->
+
+## Wireframes
+<!-- * A link to your wireframes – sketches of major views / interfaces in your application. -->
+
+## Link
 * A link to the deployed front-end app.
 * A link to the repo for your back-end.
 

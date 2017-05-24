@@ -3,13 +3,13 @@
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const view = require('./view')
-const events = require('./auth/events')
+const authEvents = require('./auth/events')
 const uploadEvents = require('./uploads/events')
 
 $(() => {
   setAPIOrigin(location, config)
   view.initView()
-  events.addHandlers()
+  authEvents.addHandlers()
   uploadEvents.addHandlers()
 })
 
