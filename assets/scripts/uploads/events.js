@@ -23,22 +23,24 @@ const createUploadMultiPart = function (event) {
       .then(() => {
         uploadApi.getFiles()
             .then(uploadUi.getFilesSuccess)
+            .then(() => { view.showAlert(`message`, `Your file has been uploaded`) })
             .catch(uploadUi.getFilesFailure)
       })
       .catch(uploadUi.uploadFileFailure)
   }
 }
 
-const onDelete = function (event) {
-  event.preventDefault()
-  const dataId = $(this).closest('tr').data('id')
+const onDelete = function (id) {
+  // event.preventDefault()
+  // const dataId = $(this).closest('tr').data('id')
 
-  if (dataId.length !== 0) {
-    uploadApi.deleteFile(dataId)
+  if (id.length !== 0) {
+    uploadApi.deleteFile(id)
       .then(uploadUi.deleteFileSuccess)
       .then(() => {
         uploadApi.getFiles()
           .then(uploadUi.getFilesSuccess)
+          .then(() => { view.showAlert(`message`, `Your file has been deleted`) })
           .catch(uploadUi.getFilesFailure)
       })
       .catch(uploadUi.deleteFileFailure)
@@ -62,6 +64,7 @@ const onUpdate = function (event) {
       .then(() => {
         uploadApi.getFiles()
             .then(uploadUi.getFilesSuccess)
+            .then(() => { view.showAlert(`message`, `Your file has been updated.`) })
             .catch(uploadUi.getFilesFailure)
       })
       .catch(uploadUi.updateFileFailure)
@@ -74,11 +77,31 @@ const onGetFiles = function () {
     .catch(uploadUi.getFilesFailure)
 }
 
+// onConfirmDeleteItem
+//    confirm user's intent to delete before calling API
+
+const onConfirmDeleteItem = function (event) {
+  // get the item id
+  const id = $(this).closest('tr').data('id')
+  // manage the confirm delete modal
+  view.showConfirmDelete(id)
+
+  // if modal confirms delete item
+  $('#delete-modal-confirm').on('click', () => {
+    // hide modal
+    $('#delete-modal').modal('hide')
+    // make delete item api call
+    onDelete(id)
+  })
+}
+
 const addHandlers = function () {
   // handler for submitting multi part upload form
   $('body').on('submit', '#multipart-form-data', createUploadMultiPart)
   // handler for clicking a file delete button
-  $('body').on('click', '#each-file-delete', onDelete)
+  // $('body').on('click', '#each-file-delete', onDelete)
+  // delete item link clicked
+  $('.content-div').on('click', '#each-file-delete', onConfirmDeleteItem)
   // handler for submitting the file uopdate form
   $('body').on('submit', '#update-file', onUpdate)
 

@@ -3,7 +3,7 @@
 const view = require('../view.js')
 
 const deleteFileSuccess = () => {
-
+  // view.showAlert(`message`, `Your file has been deleted`)
 }
 
 const deleteFileFailure = () => {
@@ -19,6 +19,7 @@ const getFilesFailure = () => {
 }
 
 const uploadFileSuccess = (data) => {
+  // view.showAlert(`message`, `Your file has been uploaded.`)
   $('#upload-modal').modal('hide')
 }
 
@@ -27,6 +28,7 @@ const uploadFileFailure = () => {
 }
 
 const updateFileSuccess = () => {
+  // view.showAlert(`message`, `Your file has been updated.`)
   $('#update-modal').modal('hide')
 }
 
