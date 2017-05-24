@@ -35,12 +35,11 @@ const deleteFile = (data) => {
   // debugger
   // console.log('update', data)
   return $.ajax({
-    url: config.apiOrigin + '/uploads/' + data.id,
+    url: config.apiOrigin + '/uploads/' + data,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data: data
+    }
   })
 }
 

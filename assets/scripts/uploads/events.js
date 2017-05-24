@@ -22,12 +22,17 @@ const createUploadMultiPart = function (event) {
 
 const onDelete = function (event) {
   event.preventDefault()
-  const dataId = $(this).closest('tr')
+  const dataId = $(this).closest('tr').data('id')
   // getFormFields(event.target).file
   console.log('in delete: ', dataId)
   if (dataId.length !== 0) {
     uploadApi.deleteFile(dataId)
       .then(uploadUi.deleteFileSuccess)
+      .then(() => {
+        uploadApi.getFiles()
+          .then(uploadUi.getFilesSuccess)
+          .catch(uploadUi.getFilesFailure)
+      })
       .catch(uploadUi.deleteFileFailure)
   }
 }
