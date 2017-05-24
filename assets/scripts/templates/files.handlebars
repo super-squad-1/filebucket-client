@@ -20,7 +20,7 @@
     <tr data-id="{{file.id}}">
       <td class="file-name col-sm-6 col-xs-8">
         <span class="file-icon glyphicon glyphicon-file"></span>
-        <button class="btn btn-link">{{file.name}}</button>
+        <a href="{{file.url}}" class="btn btn-link" target="_blank">{{file.name}}</a>
       </td>
       <td class="file-date file-date-created col-sm-2 hidden-xs">{{file.createdAt}}</td>
       <td class="file-date file-date-modified col-sm-2 col-xs-2">{{file.updatedAt}}</td>
@@ -32,9 +32,9 @@
           <button class="btn btn-default" id="each-file-update">
             <i class="glyphicon glyphicon-pencil"></i>
           </button>
-          <button class="btn btn-primary"id="each-file-download">
+          <a href="{{file.url}}" class="btn btn-primary" id="each-file-download" download>
             <i class="glyphicon glyphicon-download-alt"></i>
-          </button>
+          </a>
         </div>
       </td>
       <!-- <td class="col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>

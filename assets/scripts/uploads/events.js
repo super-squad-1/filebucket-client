@@ -67,7 +67,7 @@ const addHandlers = function () {
   // $('body').on('submit', '#file-update', onUpdate)
   $('body').on('click', '#each-file-update', onUpdate)
 
-  $('body').on('click', '#each-file-download', onDownload)
+  // $('body').on('click', '#each-file-download', onDownload)
   $('body').on('click', '#get-files', onGetFiles)
 
   $('body').on('change', '#file-selector', () => {

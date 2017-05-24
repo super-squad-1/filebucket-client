@@ -211,21 +211,6 @@ const showFiles = (files) => {
 }
 
 const addHandlers = () => {
-  // TEMPORARY HANDLERS FOR DEV TESTING
-  // event handler for table body row
-  $('.content-div').on('click', 'tbody tr', () => {
-    // TEMPORARY
-    console.log(`table-row clicked`)
-  })
-
-  // event handler for file name link
-  $('.content-div').on('click', '.file-name button', (event) => {
-    // keeps table row from registering click event, too
-    event.stopPropagation()
-    // TEMPORARY
-    console.log(`file-name clicked`)
-  })
-
   // event handler for clicking the 'upload' button in the nav
   $('.navbar-div').on('click', '#show-upload-button', () => {
     showUpload()
