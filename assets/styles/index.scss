@@ -57,10 +57,14 @@ tbody tr {
   top: 0;
 }
 
-btn-group {
+.btn-group {
   white-space: nowrap;
   .btn {
     display: inline-block;
     float: none;
   }
+}
+
+.input-group {
+  width: 100%;
 }

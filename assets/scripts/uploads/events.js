@@ -1,6 +1,7 @@
 'use strict'
 
-// const getFormFields = require('../../../lib/get-form-fields')
+const getFormFields = require('../../../lib/get-form-fields')
+const view = require('../view')
 
 const uploadApi = require('./api')
 const uploadUi = require('./ui')
@@ -53,10 +54,14 @@ const onDelete = function (event) {
 
 const onUpdate = function (event) {
   event.preventDefault()
-  const dataId = $(this).closest('tr')
-  if (dataId.length !== 0) {
-  // getFormFields(event.target)
-    uploadApi.updateFile(dataId)
+
+  const data = getFormFields(event.target)
+  data.upload.id = $(event.target).data('id')
+
+  if (!data.upload.name) {
+    view.formAlert('#update-file', '#file-update-title')
+  } else {
+    uploadApi.updateFile(data)
       .then(uploadUi.updateFileSuccess)
       .catch(uploadUi.updateFileFailure)
   }
@@ -75,7 +80,7 @@ const addHandlers = function () {
   // $('body').on('submit', '#file-delete', onDelete)
   $('body').on('click', '#each-file-delete', onDelete)
   // $('body').on('submit', '#file-update', onUpdate)
-  $('body').on('click', '#each-file-update', onUpdate)
+  $('body').on('submit', '#update-file', onUpdate)
 
   // $('body').on('click', '#each-file-download', onDownload)
   $('body').on('click', '#get-files', onGetFiles)
