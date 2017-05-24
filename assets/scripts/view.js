@@ -229,6 +229,7 @@ const showFiles = (files) => {
     finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
     e.createdAt = finalString
   })
+
   renderView('.content-div', 'files', {data: {files: files, userID: store.user.id}})
 }
 
