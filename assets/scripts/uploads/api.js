@@ -18,7 +18,6 @@ const createMulti = function (data) {
 }
 
 const updateFile = (data) => {
-  console.log('update', data.upload.id)
   return $.ajax({
     url: config.apiOrigin + '/uploads/' + data.upload.id,
     // data holds both id and title so no need for id
@@ -31,8 +30,6 @@ const updateFile = (data) => {
 }
 
 const deleteFile = (data) => {
-  // debugger
-  // console.log('update', data)
   return $.ajax({
     url: config.apiOrigin + '/uploads/' + data,
     method: 'DELETE',
@@ -43,9 +40,6 @@ const deleteFile = (data) => {
 }
 
 const downloadFile = (data) => {
-  // debugger
-  // console.log('api.data', data)
-  // console.log('api.data.id', data.id)
   return $.ajax({
     url: config.apiOrigin + '/uploads/' + data.id,
     method: 'GET',
@@ -54,7 +48,6 @@ const downloadFile = (data) => {
 }
 
 const getFiles = () => {
-  console.log('uploadApi.getFiles')
   return $.ajax({
     url: config.apiOrigin + '/uploads',
     method: 'GET'

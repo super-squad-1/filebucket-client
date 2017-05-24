@@ -53,6 +53,10 @@ const onUpdate = function (event) {
 
   const data = getFormFields(event.target)
   data.upload.id = $(event.target).data('id')
+<<<<<<< HEAD
+=======
+  console.log(data.upload.id)
+>>>>>>> Alphabetize the file list before display.
 
   if (!data.upload.name) {
     view.formAlert('#update-file', '#file-update-title')
