@@ -15,17 +15,6 @@ const createUploadMultiPart = function (event) {
     .catch(uploadUi.error)
 }
 
-// const onDelete = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target).file
-//   console.log('in delete: ', data.id)
-//   if (data.id.length !== 0) {
-//     uploadApi.deleteFile(data.id)
-//     .then(uploadUi.deleteFileSuccess)
-//     .catch(uploadUi.deleteFileFailure)
-//   }
-// }
-
 const onDelete = function (event) {
   event.preventDefault()
   const dataId = $(this).closest('tr')
@@ -38,13 +27,16 @@ const onDelete = function (event) {
   }
 }
 
-// const onUpdate = function (event) {
-//   event.preventDefault()
-//   const dataId = getFormFields(event.target)
-//   uploadApi.updateFile(dataId)
-//   .then(uploadUi.updateFileSuccess)
-//   .catch(uploadUi.updateFileFailure)
-// }
+const onDownload = function (event) {
+  event.preventDefault()
+  const dataId = $(this).closest('tr')
+  if (dataId.length !== 0) {
+  // getFormFields(event.target)
+    uploadApi.downloadFile(dataId)
+  .then(uploadUi.downloadFileSuccess)
+  .catch(uploadUi.downloadFileFailure)
+  }
+}
 
 // NOTE: this function needs to be passed more than just the id.
 // It also needs the title as part of a data object with the id
@@ -60,6 +52,15 @@ const onUpdate = function (event) {
   }
 }
 
+const onGetFiles = function (event) {
+  console.log(data)
+  const data = getFormFields(event.target)
+  event.preventDefault()
+  uploadUi.getAllFiles(data)
+    .then(uploadUi.getFilesSuccess)
+    .catch(uploadUi.getFilesFailure)
+}
+
 const addHandlers = function () {
   $('body').on('submit', '#multipart-form-data', createUploadMultiPart)
 
@@ -67,6 +68,9 @@ const addHandlers = function () {
   $('body').on('click', '#each-file-delete', onDelete)
   // $('body').on('submit', '#file-update', onUpdate)
   $('body').on('click', '#each-file-update', onUpdate)
+
+  $('body').on('click', '#each-file-download', onDownload)
+  $('body').on('click', '#get-files', onGetFiles)
 
   $('body').on('change', '#file-selector', () => {
     // get the filename from the file selector input
@@ -82,5 +86,6 @@ module.exports = {
   createUploadMultiPart,
   addHandlers,
   onUpdate,
-  onDelete
+  onDelete,
+  onGetFiles
 }

@@ -24,11 +24,31 @@ const deleteFileFailure = (error) => {
   console.log('error on delete file in ', error)
 }
 
+const downloadFileSuccess = (data) => {
+  console.log('success download file')
+}
+
+const downloadFileFailure = (error) => {
+  console.log('error on download file in ', error)
+}
+
+const getFilesSuccess = (data) => {
+  console.log('success get files')
+}
+
+const getFilesFailure = (error) => {
+  console.log('error on get files in ', error)
+}
+
 module.exports = {
   success,
   error,
   updateFileSuccess,
   updateFileFailure,
   deleteFileSuccess,
-  deleteFileFailure
+  deleteFileFailure,
+  downloadFileSuccess,
+  downloadFileFailure,
+  getFilesSuccess,
+  getFilesFailure
 }
