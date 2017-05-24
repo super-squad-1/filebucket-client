@@ -18,10 +18,9 @@ const createMulti = function (data) {
 }
 
 const updateFile = (data) => {
-  // debugger
   // console.log('update', data)
   return $.ajax({
-    url: config.apiOrigin + '/update/' + data,
+    url: config.apiOrigin + '/uploads/' + data.upload.id,
     // data holds both id and title so no need for id
     method: 'PATCH',
     headers: {

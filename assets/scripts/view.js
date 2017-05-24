@@ -204,6 +204,25 @@ const showUpload = () => {
   $('#upload-modal').modal('show')
 }
 
+const showUpdate = (data) => {
+  // render handlebars template with data-id for item
+  appendView('body', 'modal-update', {file:data})
+
+  // if there's already a modal
+  // if ($('#upload-modal').length) {
+
+  //  // replace the existing modal
+  //  renderView('#upload-modal', 'modal-upload')
+  // } else {
+  //  // insert a new alert
+  //  appendView('body', 'modal-upload')
+  // }
+
+  // show the hidden modal
+  $('#update-modal').modal('show')
+}
+
+
 const showFiles = (files) => {
   console.log('view.showFiles')
   console.log(`${files}`)
@@ -214,6 +233,15 @@ const addHandlers = () => {
   // event handler for clicking the 'upload' button in the nav
   $('.navbar-div').on('click', '#show-upload-button', () => {
     showUpload()
+  })
+
+  // event handler for clicking the 'update' button on a file
+  $('.content-div').on('click', '#each-file-update', (event) => {
+    const data = {
+      id: $(event.target).closest('tr').data('id'),
+      title: $(event.target).closest('tr').find('.file-name').text()
+    }
+    showUpdate(data)
   })
 
   // DROPDOWN MENU EVENTS
