@@ -56,3 +56,11 @@ tbody tr {
   right: 0;
   top: 0;
 }
+
+btn-group {
+  white-space: nowrap;
+  .btn {
+    display: inline-block;
+    float: none;
+  }
+}
