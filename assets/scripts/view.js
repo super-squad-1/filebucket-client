@@ -46,6 +46,12 @@ const renderView = (element, hbsFile, params) => {
   $(element).html(content)
 }
 
+const replaceView = (element, hbsFile, params) => {
+  const template = require(`./templates/${hbsFile}.handlebars`)
+  const content = template(params)
+  $(element).replaceWith(content)
+}
+
 // appendView(element, filepath)
 // renders the template and appends it to the element
 
@@ -205,27 +211,35 @@ const showUpload = () => {
 }
 
 const showUpdate = (data) => {
+  console.log('addHandler data', data)
+  // debugger
   // render handlebars template with data-id for item
-  appendView('body', 'modal-update', {file:data})
+  // appendView('body', 'modal-update', {file: data})
 
   // if there's already a modal
-  // if ($('#upload-modal').length) {
-
-  //  // replace the existing modal
-  //  renderView('#upload-modal', 'modal-upload')
-  // } else {
-  //  // insert a new alert
-  //  appendView('body', 'modal-upload')
-  // }
+  if ($('#update-modal').length) {
+  //  replace theexisting modal
+    replaceView('#update-modal', 'modal-update', {file: data})
+  } else {
+   // insert a new alert
+    appendView('body', 'modal-update', {file: data})
+  }
 
   // show the hidden modal
   $('#update-modal').modal('show')
 }
 
-
 const showFiles = (files) => {
-  console.log('view.showFiles')
-  console.log(`${files}`)
+  files.forEach(function (e) {
+    const time = new Date(e.updatedAt)
+    const finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
+    e.updatedAt = finalString
+  })
+  files.forEach(function (e) {
+    const time = new Date(e.createdAt)
+    const finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
+    e.createdAt = finalString
+  })
   renderView('.content-div', 'files', {files: files})
 }
 
@@ -241,6 +255,8 @@ const addHandlers = () => {
       id: $(event.target).closest('tr').data('id'),
       title: $(event.target).closest('tr').find('.file-name').text()
     }
+
+    console.log('addHandler data.id:', data.id)
     showUpdate(data)
   })
 

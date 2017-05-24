@@ -57,12 +57,19 @@ const onUpdate = function (event) {
 
   const data = getFormFields(event.target)
   data.upload.id = $(event.target).data('id')
+  console.log(data.upload.id)
+  debugger
 
   if (!data.upload.name) {
     view.formAlert('#update-file', '#file-update-title')
   } else {
     uploadApi.updateFile(data)
       .then(uploadUi.updateFileSuccess)
+      .then(() => {
+        uploadApi.getFiles()
+            .then(uploadUi.getFilesSuccess)
+            .catch(uploadUi.getFilesFailure)
+      })
       .catch(uploadUi.updateFileFailure)
   }
 }

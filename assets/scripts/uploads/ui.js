@@ -10,14 +10,6 @@ const error = function (error) {
   console.log('error is:', error)
 }
 
-const updateFileSuccess = (data) => {
-  console.log(data)
-}
-
-const updateFileFailure = (error) => {
-  console.log('error on update file in ', error)
-}
-
 const deleteFileSuccess = (data) => {
   console.log('success delete file')
 }
@@ -48,11 +40,17 @@ const getFilesFailure = () => {
 const uploadFileSuccess = (data) => {
   console.log('success upload file')
   $('#upload-modal').modal('hide')
-  // debugger
-  view.showFiles(data.uploads)
 }
 
 const uploadFileFailure = (error) => {
+  console.log('error on upload file in ', error)
+}
+
+const updateFileSuccess = (data) => {
+  $('#update-modal').modal('hide')
+}
+
+const updateFileFailure = (error) => {
   console.log('error on upload file in ', error)
 }
 
