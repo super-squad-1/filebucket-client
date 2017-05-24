@@ -210,6 +210,18 @@ const showUpdate = (data) => {
 }
 
 const showFiles = (files) => {
+  // first, let's alphabetize the files
+  files.sort(function (a, b) {
+    const nameA = a.name.toUpperCase()
+    const nameB = b.name.toUpperCase()
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+  })
+
   files.forEach(function (e) {
     const time = new Date(e.updatedAt)
     let finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
