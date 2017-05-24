@@ -97,7 +97,7 @@ const formAlert = (form, field) => {
   // apply alert classes to specfic input
   $(field).closest('.form-group').addClass('has-warning has-feedback')
   // add alert icon to specific input
-  $(field).closest('.input-group').append(`<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>`)
+  $(field).closest('.input-group').find('.form-control').after(`<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>`)
   // show help text for specific input
   $(field).closest('.form-group').find('.help-block').show()
 }
@@ -133,7 +133,7 @@ const showAlert = (mode, message) => {
   // if there's already an alert
   if ($('.alert').length) {
     // replace the existing alert
-    renderView('.alert', 'alert', { mode: mode, message: message })
+    replaceView('.alert', 'alert', { mode: mode, message: message })
   } else {
     // insert a new alert
     prependView('.content-div', 'alert', { mode: mode, message: message })
@@ -233,6 +233,18 @@ const showFiles = (files) => {
   renderView('.content-div', 'files', {data: {files: files, userID: store.user.id}})
 }
 
+const showConfirmDelete = (id) => {
+  if ($('#delete-modal').length) {
+  //  replace theexisting modal
+    replaceView('#delete-modal', 'modal-confirm-delete', {id: id})
+  } else {
+   // insert a new alert
+    appendView('body', 'modal-confirm-delete', {id: id})
+  }
+  // show the hidden modal
+  $('#delete-modal').modal('show')
+}
+
 const addHandlers = () => {
   // event handler for clicking the 'upload' button in the nav
   $('.navbar-div').on('click', '#show-upload-button', () => {
@@ -281,5 +293,6 @@ module.exports = {
   showChangePasswordSuccess,
   showChangePasswordFailure,
   showUpload,
-  showFiles
+  showFiles,
+  showConfirmDelete
 }
