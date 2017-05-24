@@ -240,9 +240,6 @@ const showFiles = (files) => {
     const finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
     e.createdAt = finalString
   })
-  console.log(files)
-  console.log(files[0].createdAt)
-  console.log(files[1].updatedAt)
   renderView('.content-div', 'files', {files: files})
 }
 
