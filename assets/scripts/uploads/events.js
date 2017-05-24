@@ -1,6 +1,6 @@
 'use strict'
 
-const getFormFields = require('../../../lib/get-form-fields')
+// const getFormFields = require('../../../lib/get-form-fields')
 
 const uploadApi = require('./api')
 const uploadUi = require('./ui')
@@ -11,8 +11,13 @@ const createUploadMultiPart = function (event) {
   const data = new FormData(myForm)
 
   uploadApi.createMulti(data)
-    .then(uploadUi.success)
-    .catch(uploadUi.error)
+    .then(uploadUi.uploadFileSuccess)
+    .then(() => {
+      uploadApi.getFiles()
+          .then(uploadUi.getFilesSuccess)
+          .catch(uploadUi.getFilesFailure)
+    })
+    .catch(uploadUi.uploadFileFailure)
 }
 
 const onDelete = function (event) {
@@ -27,16 +32,16 @@ const onDelete = function (event) {
   }
 }
 
-const onDownload = function (event) {
-  event.preventDefault()
-  const dataId = $(this).closest('tr')
-  if (dataId.length !== 0) {
-  // getFormFields(event.target)
-    uploadApi.downloadFile(dataId)
-  .then(uploadUi.downloadFileSuccess)
-  .catch(uploadUi.downloadFileFailure)
-  }
-}
+// const onDownload = function (event) {
+//   event.preventDefault()
+//   const dataId = $(this).closest('tr')
+//   if (dataId.length !== 0) {
+//   // getFormFields(event.target)
+//     uploadApi.downloadFile(dataId)
+//   .then(uploadUi.downloadFileSuccess)
+//   .catch(uploadUi.downloadFileFailure)
+//   }
+// }
 
 // NOTE: this function needs to be passed more than just the id.
 // It also needs the title as part of a data object with the id

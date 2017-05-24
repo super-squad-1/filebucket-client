@@ -45,6 +45,17 @@ const getFilesFailure = () => {
   view.showAlert(`error`, `Hmmm. Couldn't get your list of files...`)
 }
 
+const uploadFileSuccess = (data) => {
+  console.log('success upload file')
+  $('#upload-modal').modal('hide')
+  // debugger
+  view.showFiles(data.uploads)
+}
+
+const uploadFileFailure = (error) => {
+  console.log('error on upload file in ', error)
+}
+
 module.exports = {
   success,
   error,
@@ -55,5 +66,7 @@ module.exports = {
   downloadFileSuccess,
   downloadFileFailure,
   getFilesSuccess,
-  getFilesFailure
+  getFilesFailure,
+  uploadFileSuccess,
+  uploadFileFailure
 }
