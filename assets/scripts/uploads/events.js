@@ -58,7 +58,6 @@ const onUpdate = function (event) {
   const data = getFormFields(event.target)
   data.upload.id = $(event.target).data('id')
   console.log(data.upload.id)
-  debugger
 
   if (!data.upload.name) {
     view.formAlert('#update-file', '#file-update-title')
