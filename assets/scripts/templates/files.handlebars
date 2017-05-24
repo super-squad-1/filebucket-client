@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each files as |file|}}
+    {{#each data.files as |file|}}
     <tr data-id="{{file.id}}">
       <td class="col-sm-6 col-xs-8">
         <span class="file-icon glyphicon glyphicon-file"></span>
@@ -25,57 +25,25 @@
       <td class="file-date file-date-created col-sm-2 hidden-xs">{{file.createdAt}}</td>
       <td class="file-date file-date-modified col-sm-2 col-xs-2">{{file.updatedAt}}</td>
       <td class="col-sm-2 col-xs-2 text-right">
-        <div class="btn-group">
-          <button class="btn btn-default" id="each-file-delete">
-            <i class="glyphicon glyphicon-trash"></i>
-          </button>
-          <button class="btn btn-default" id="each-file-update">
-            <i class="glyphicon glyphicon-pencil"></i>
-          </button>
+        {{#isOwner owner user=../data.userID owner=file._owner}}
+          <div class="btn-group">
+            <button class="btn btn-default" id="each-file-delete">
+              <i class="glyphicon glyphicon-trash"></i>
+            </button>
+            <button class="btn btn-default" id="each-file-update">
+              <i class="glyphicon glyphicon-pencil"></i>
+            </button>
+            <a href="{{file.url}}" class="btn btn-primary" id="each-file-download" download>
+              <i class="glyphicon glyphicon-download-alt"></i>
+            </a>
+          </div>
+        {{else}}
           <a href="{{file.url}}" class="btn btn-primary" id="each-file-download" download>
             <i class="glyphicon glyphicon-download-alt"></i>
           </a>
-        </div>
+        {{/isOwner}}
       </td>
-      <!-- <td class="col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>
-      <td class="col-sm-2 col-xs-4"><button class="glyphicon glyphicon-pencil" id="each-file-update"></button></td>
-      <td class="col-sm-2 col-xs-4"><button class="glyphicon glyphicon-download-alt"id="each-file-download"></button></td> -->
     </tr>
     {{/each}}
-
-    <!-- <tr>
-      <td class="file-name col-sm-8 col-xs-8">
-        <span class="file-icon glyphicon glyphicon-folder-open"></span>
-        <button class="btn btn-link">Folder Name</button>
-      </td>
-      <td class="file-date file-date-created col-sm-2 hidden-xs">05-20-2017</td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4">05-20-2017</td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-pencil" id="each-file-update"></button></td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-download-alt"id="each-file-download"></button></td>
-
-    </tr>
-    <tr>
-      <td class="file-name col-sm-8 col-xs-8">
-        <span class="file-icon glyphicon glyphicon-file"></span>
-        <button class="btn btn-link">File Name</button>
-      </td>
-      <td class="file-date file-date-created col-sm-2 hidden-xs">05-20-2017</td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4">05-20-2017</td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-pencil" id="each-file-update"></button></td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-download-alt"id="each-file-download"></button></td>
-    </tr>
-    <tr>
-      <td class="file-name col-sm-8 col-xs-8">
-        <span class="file-icon glyphicon glyphicon-file"></span>
-        <button class="btn btn-link">File Name</button>
-      </td>
-      <td class="file-date file-date-created col-sm-2 hidden-xs">05-20-2017</td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4">05-20-2017</td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-trash" id="each-file-delete"></button></td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-pencil" id="each-file-update"></button></td>
-      <td class="file-date file-date-modified col-sm-2 col-xs-4"><button class="glyphicon glyphicon-download-alt" id="each-file-download"></button></td>
-    </tr> -->
   </tbody>
 </table>

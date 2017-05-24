@@ -2,34 +2,15 @@
 
 const view = require('../view.js')
 
-const success = function (data) {
-  console.log('success data is:', data)
+const deleteFileSuccess = () => {
+
 }
 
-const error = function (error) {
-  console.log('error is:', error)
-}
-
-const deleteFileSuccess = (data) => {
-  console.log('success delete file')
-}
-
-const deleteFileFailure = (error) => {
-  console.log('error on delete file in ', error)
-}
-
-const downloadFileSuccess = (data) => {
-  console.log('success download file')
-}
-
-const downloadFileFailure = (error) => {
-  console.log('error on download file in ', error)
+const deleteFileFailure = () => {
+  view.showAlert(`error`, `Your file could not be deleted`)
 }
 
 const getFilesSuccess = (response) => {
-  console.log('uploads.events.getFilesSuccess: response')
-  console.log(`${response}`)
-
   view.showFiles(response.uploads)
 }
 
@@ -38,31 +19,26 @@ const getFilesFailure = () => {
 }
 
 const uploadFileSuccess = (data) => {
-  console.log('success upload file')
   $('#upload-modal').modal('hide')
 }
 
-const uploadFileFailure = (error) => {
-  console.log('error on upload file in ', error)
+const uploadFileFailure = () => {
+  view.showAlert(`error`, `Your file could not be uploaded.`)
 }
 
-const updateFileSuccess = (data) => {
+const updateFileSuccess = () => {
   $('#update-modal').modal('hide')
 }
 
-const updateFileFailure = (error) => {
-  console.log('error on upload file in ', error)
+const updateFileFailure = () => {
+  view.showAlert(`error`, `Your file title could not be updated.`)
 }
 
 module.exports = {
-  success,
-  error,
   updateFileSuccess,
   updateFileFailure,
   deleteFileSuccess,
   deleteFileFailure,
-  downloadFileSuccess,
-  downloadFileFailure,
   getFilesSuccess,
   getFilesFailure,
   uploadFileSuccess,

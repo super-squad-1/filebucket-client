@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('./store')
+
 //
 // VIEW INITIALIZERS
 //
@@ -16,28 +18,11 @@ const initView = () => {
   addHandlers()
 }
 
-// initTempView()
-// initializes temporary private view with sample grid and test forms
-
-const initTempView = () => {
-  // render private view to navbar-div
-  renderView('.navbar-div', 'nav-private')
-  // append file table view to content-div
-  // renderView('.content-div', 'file-table')
-
-  // development testing forms
-
-  // update file form
-  // renderView('.temp-div', 'file-update')
-  // delete file form
-  // appendView('.temp-div', 'file-delete')
-}
-
 //
 // VIEW RENDERING FUNCTIONS
 //
 
-// renderView(element, hbsFile)
+// renderView(element, hbsFile, params)
 // renders the template and replaces the element
 
 const renderView = (element, hbsFile, params) => {
@@ -46,13 +31,16 @@ const renderView = (element, hbsFile, params) => {
   $(element).html(content)
 }
 
+// replaceView(element, hbsFile, params)
+// renders the template and replaces the element
+
 const replaceView = (element, hbsFile, params) => {
   const template = require(`./templates/${hbsFile}.handlebars`)
   const content = template(params)
   $(element).replaceWith(content)
 }
 
-// appendView(element, filepath)
+// appendView(element, filepath, params)
 // renders the template and appends it to the element
 
 const appendView = (element, hbsFile, params) => {
@@ -61,7 +49,7 @@ const appendView = (element, hbsFile, params) => {
   $(element).append(content)
 }
 
-// prependView(element, filepath)
+// prependView(element, filepath, params)
 // renders the template and appends it to the element
 
 const prependView = (element, hbsFile, params) => {
@@ -94,7 +82,7 @@ const setPublicMode = () => {
 const setPrivateMode = () => {
   // closeAlert()
   renderView('.navbar-div', 'nav-private')
-  initTempView()
+  // initTempView()
 }
 
 //
@@ -194,29 +182,22 @@ const showChangePasswordFailure = () => {
 
 const showUpload = () => {
   // render handlebars template with data-id for item
-  appendView('body', 'modal-upload')
+  // appendView('body', 'modal-upload')
 
   // if there's already a modal
-  // if ($('#upload-modal').length) {
-
-  //  // replace the existing modal
-  //  renderView('#upload-modal', 'modal-upload')
-  // } else {
-  //  // insert a new alert
-  //  appendView('body', 'modal-upload')
-  // }
+  if ($('#upload-modal').length) {
+   // replace the existing modal
+    replaceView('#upload-modal', 'modal-upload')
+  } else {
+     // insert a new alert
+    appendView('body', 'modal-upload')
+  }
 
   // show the hidden modal
   $('#upload-modal').modal('show')
 }
 
 const showUpdate = (data) => {
-  console.log('addHandler data', data)
-  // debugger
-  // render handlebars template with data-id for item
-  // appendView('body', 'modal-update', {file: data})
-
-  // if there's already a modal
   if ($('#update-modal').length) {
   //  replace theexisting modal
     replaceView('#update-modal', 'modal-update', {file: data})
@@ -224,7 +205,6 @@ const showUpdate = (data) => {
    // insert a new alert
     appendView('body', 'modal-update', {file: data})
   }
-
   // show the hidden modal
   $('#update-modal').modal('show')
 }
@@ -232,18 +212,12 @@ const showUpdate = (data) => {
 const showFiles = (files) => {
   files.forEach(function (e) {
     const time = new Date(e.updatedAt)
-    const finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
+    let finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
     e.updatedAt = finalString
-  })
-  files.forEach(function (e) {
-    const time = new Date(e.createdAt)
-    const finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
+    finalString = time.toLocaleDateString() + ' ' + time.toLocaleTimeString().replace(/:\d\d /, '')
     e.createdAt = finalString
   })
-  console.log(files)
-  console.log(files[0].createdAt)
-  console.log(files[1].updatedAt)
-  renderView('.content-div', 'files', {files: files})
+  renderView('.content-div', 'files', {data: {files: files, userID: store.user.id}})
 }
 
 const addHandlers = () => {
@@ -258,8 +232,6 @@ const addHandlers = () => {
       id: $(event.target).closest('tr').data('id'),
       title: $(event.target).closest('tr').find('.file-name').text()
     }
-
-    console.log('addHandler data.id:', data.id)
     showUpdate(data)
   })
 
