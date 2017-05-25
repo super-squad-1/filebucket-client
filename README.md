@@ -28,9 +28,11 @@ http://imgur.com/S4wFmJe
 http://imgur.com/sQDYgyl
 http://imgur.com/wCyj8U3
 
-## Link
-[front-end app](https://super-squad-1.github.io/filebucket-client/#)
-[back-end repo](https://github.com/super-squad-1/filebucket-server)
+## Project Links
+[FRONTEND-DEPLOY]  https://super-squad-1.github.io/filebucket-client/
+[FRONTEND-REPO]  https://github.com/super-squad-1/filebucket-client
+[BACKEND-DEPLOY]  https://safe-retreat-33747.herokuapp.com
+[BACKEND-REPO]  https://github.com/super-squad-1/filebucket-server
 
 ## User Stories
 
