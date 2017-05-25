@@ -30,12 +30,12 @@ const createUploadMultiPart = function (event) {
   }
 }
 
-const onDelete = function (id) {
+const onDelete = function (event) {
   // event.preventDefault()
-  // const dataId = $(this).closest('tr').data('id')
+  const dataId = $(this).closest('tr').data('id')
 
-  if (id.length !== 0) {
-    uploadApi.deleteFile(id)
+  if (dataId.length !== 0) {
+    uploadApi.deleteFile(dataId)
       .then(uploadUi.deleteFileSuccess)
       .then(() => {
         uploadApi.getFiles()
@@ -80,20 +80,20 @@ const onGetFiles = function () {
 // onConfirmDeleteItem
 //    confirm user's intent to delete before calling API
 
-const onConfirmDeleteItem = function (event) {
-  // get the item id
-  const id = $(this).closest('tr').data('id')
-  // manage the confirm delete modal
-  view.showConfirmDelete(id)
-
-  // if modal confirms delete item
-  $('#delete-modal-confirm').on('click', () => {
-    // hide modal
-    $('#delete-modal').modal('hide')
-    // make delete item api call
-    onDelete(id)
-  })
-}
+// const onConfirmDeleteItem = function (event) {
+//   // get the item id
+//   const id = $(this).closest('tr').data('id')
+//   // manage the confirm delete modal
+//   view.showConfirmDelete(id)
+//
+//   // if modal confirms delete item
+//   $('#delete-modal-confirm').on('click', () => {
+//     // hide modal
+//     $('#delete-modal').modal('hide')
+//     // make delete item api call
+//     onDelete(id)
+//   })
+// }
 
 const addHandlers = function () {
   // handler for submitting multi part upload form
@@ -101,7 +101,7 @@ const addHandlers = function () {
   // handler for clicking a file delete button
   // $('body').on('click', '#each-file-delete', onDelete)
   // delete item link clicked
-  $('.content-div').on('click', '#each-file-delete', onConfirmDeleteItem)
+  $('.content-div').on('click', '#each-file-delete', onDelete)
   // handler for submitting the file uopdate form
   $('body').on('submit', '#update-file', onUpdate)
 
